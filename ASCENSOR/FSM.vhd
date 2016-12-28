@@ -31,7 +31,7 @@ PROCESS(reset,clock)
 					IF nivel='1' then presente<=parado;
 					END IF;
 				WHEN parado=>    -- Espera la pulsación de un botón
-					IF (bot/="00") AND (bot/=piso) THEN presente<=cerrando;
+					IF (bot/="0000") AND (bot/=piso) THEN presente<=cerrando;
 					END IF;
 				WHEN cerrando=>  -- Cierra la puerta
 					IF cerrado='1' THEN presente<=marcha;
@@ -50,13 +50,12 @@ memoria:
 PROCESS(reset,clock)   -- Captura la pulsación del botón
 BEGIN                -- y el piso donde se encuentra
    IF reset='1' THEN
-     bot<="00";
+     bot<="0000";
      piso_ini<=piso;
    ELSIF clock='1' AND clock'event THEN
      IF presente=parado THEN
-       IF (boton="01") OR (boton="10") OR (boton="11") THEN 
-				bot<=boton;
-       ELSE bot<="00";  -- Cualquier otra combinación no vale
+       IF (boton="1000") OR (boton="0100") OR (boton="0010") OR (boton="0001") THEN bot<=boton;
+       ELSE bot<="0000";  -- Cualquier otra combinación no vale
        END IF;
        piso_ini<=piso;
      END IF;
