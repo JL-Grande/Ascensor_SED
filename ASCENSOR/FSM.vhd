@@ -8,7 +8,7 @@ USE ieee.std_logic_unsigned.ALL;
 entity FSM is
 	PORT(
 	 clock,reset,nivel, celula, abierto, cerrado:  IN std_logic;
-	 piso,boton :IN STD_LOGIC_VECTOR (1 DOWNTO 0)
+	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0)
 	 );
 end FSM;
 
@@ -16,8 +16,8 @@ architecture Behavioral of FSM is
 
 	TYPE estado IS (inicial,parado,cerrando,marcha,abriendo);
    SIGNAL presente: estado:=inicial;
-   SIGNAL bot: std_logic_vector(1 DOWNTO 0); -- Almacena botón pulsado      
-   SIGNAL piso_ini: std_logic_vector(1 DOWNTO 0);   -- Piso de partida
+   SIGNAL bot: std_logic_vector(2 DOWNTO 0); -- Almacena botón pulsado      
+   SIGNAL piso_ini: std_logic_vector(2 DOWNTO 0);   -- Piso de partida
 	
 begin
 
@@ -31,7 +31,7 @@ PROCESS(reset,clock)
 					IF nivel='1' then presente<=parado;
 					END IF;
 				WHEN parado=>    -- Espera la pulsación de un botón
-					IF (bot/="00") AND (bot/=piso) THEN presente<=cerrando;
+					IF (bot/="000") AND (bot/=piso) THEN presente<=cerrando;
 					END IF;
 				WHEN cerrando=>  -- Cierra la puerta
 					IF cerrado='1' THEN presente<=marcha;
@@ -50,13 +50,12 @@ memoria:
 PROCESS(reset,clock)   -- Captura la pulsación del botón
 BEGIN                -- y el piso donde se encuentra
    IF reset='1' THEN
-     bot<="00";
+     bot<="000";
      piso_ini<=piso;
    ELSIF clock='1' AND clock'event THEN
      IF presente=parado THEN
-       IF (boton="01") OR (boton="10") OR (boton="11") THEN 
-				bot<=boton;
-       ELSE bot<="00";  -- Cualquier otra combinación no vale
+       IF (boton="001") OR (boton="010") OR (boton="011") OR (boton="100") THEN bot<=boton;
+       ELSE bot<="000";  -- Cualquier otra combinación no vale
        END IF;
        piso_ini<=piso;
      END IF;

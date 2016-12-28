@@ -41,8 +41,8 @@ COMPONENT convertidor_piso_actual
 		piso_actual: IN std_logic_vector(3 DOWNTO 0);
 		boton_seleccionado: IN std_logic_vector(3 DOWNTO 0);
 		
-		piso_actual_convertido: OUT std_logic_vector(1 DOWNTO 0);
-		boton_seleccionado_convertido: OUT std_logic_vector(1 DOWNTO 0)
+		piso_actual_convertido: OUT std_logic_vector(2 DOWNTO 0);
+		boton_seleccionado_convertido: OUT std_logic_vector(2 DOWNTO 0)
 		);
  END COMPONENT;
  
@@ -57,13 +57,13 @@ COMPONENT divisorfrec
 COMPONENT FSM
 	PORT(
 	 clock,reset,nivel, celula, abierto, cerrado:  IN std_logic;
-	 piso,boton :IN STD_LOGIC_VECTOR (1 DOWNTO 0)
+	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0)
 	 );
 END COMPONENT;
  
  signal inoutreloj:std_logic;
- signal inoutpiso_actual:std_logic_vector (1 DOWNTO 0);
- signal inoutpiso_deseado:std_logic_vector (1 DOWNTO 0);
+ signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
+ signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  
 begin
 
