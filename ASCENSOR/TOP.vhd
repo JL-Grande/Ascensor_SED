@@ -11,8 +11,8 @@ PORT(
      nivel, celula, abierto, cerrado:  IN std_logic;
 	  
 	  puerta, motor_subir, motor_bajar: OUT std_logic;	   --SALIDAS TOP
+	  piso0_sel, piso1_sel, piso2_sel, piso3_sel: OUT std_logic;
 	  
-	  piso_seleccionado: OUT std_logic_vector(3 DOWNTO 0);
 	  decoder_numeros: OUT std_logic_vector(3 DOWNTO 0);
 	  decoder_flechas: OUT std_logic_vector(3 DOWNTO 0);
 	  
@@ -60,10 +60,21 @@ COMPONENT FSM
 	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0)
 	 );
 END COMPONENT;
+
+COMPONENT dec_piso_seleccion
+	PORT (
+		piso_code : in  STD_LOGIC_VECTOR (1 downto 0);
+      piso0 : out  STD_LOGIC;
+      piso1 : out  STD_LOGIC;
+      piso2 : out  STD_LOGIC;
+      piso3 : out  STD_LOGIC
+	);
+END COMPONENT;
  
  signal inoutreloj:std_logic;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
+ signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
  
 begin
 
@@ -87,15 +98,24 @@ inst_divisorfrec:divisorfrec port map(
 		reset => reset,
 		salida => inoutreloj
 		);
+		
 inst_FSM:FSM port map(
 		celula => celula,
 		abierto => abierto,
 		cerrado => cerrado,
 		clock => inoutreloj,
-		reset =>reset,
+		reset => reset,
 		nivel => nivel,
 		piso => inoutpiso_actual,
 		boton => inoutpiso_deseado
+		);
+		
+inst_dec_piso_seleccion:dec_piso_seleccion port map(
+		piso_code => sig_piso_actual,
+		piso0 => piso0_sel,
+		piso1 => piso1_sel,
+		piso2 => piso2_sel,
+		piso3 => piso3_sel
 		);
 		
 end Behavioral;
