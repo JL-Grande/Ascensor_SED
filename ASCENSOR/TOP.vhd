@@ -12,14 +12,11 @@ PORT(
 	  
 	  puerta, motor_subir, motor_bajar: OUT std_logic;	   --SALIDAS TOP
 	  piso0_sel, piso1_sel, piso2_sel, piso3_sel: OUT std_logic;
+	  seg_piso: OUT std_logic_vector(7 DOWNTO 0);
+	  digit_ctrl : OUT std_logic;
 	  
 	  decoder_numeros: OUT std_logic_vector(3 DOWNTO 0);
 	  decoder_flechas: OUT std_logic_vector(3 DOWNTO 0);
-	  
-	  code : IN std_logic_vector(3 DOWNTO 0);             --ENTRADAS/SALIDAS PARA DECODER'S
-	  digsel : IN std_logic_vector(3 DOWNTO 0);
-	  digctrl : OUT std_logic_vector(3 DOWNTO 0);
-     segment : OUT std_logic_vector(7 DOWNTO 0);
 	  
 	  clk,clock: in std_logic;										--clk:antes de entrar al divisorfrec. clock:después de salir del divisorfrec		
 	  reset: in std_logic
@@ -32,7 +29,8 @@ architecture Behavioral of TOP is
 COMPONENT decoder
 	PORT (
 		code : in STD_LOGIC_VECTOR (3 downto 0);
-		led : OUT STD_LOGIC_VECTOR (6 downto 0)
+		led : OUT STD_LOGIC_VECTOR (6 downto 0);
+		dig_ctrl : OUT STD_LOGIC
 	);
  END COMPONENT;
 
@@ -75,16 +73,17 @@ END COMPONENT;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
+ signal code_piso_actual:std_logic_vector (3 DOWNTO 0);
  
 begin
 
 inst_decoder: decoder port map(
 
-		code => code,
-		led => segment (7 downto 1)
+		code => code_piso_actual,
+		led => seg_piso (7 downto 1),
+		dig_ctrl => digit_ctrl
 	);
-	segment(0) <= '1';
-	digctrl <= not digsel;
+	seg_piso(0) <= '1';
 
 inst_convertidor_piso_actual:convertidor_piso_actual port map(
 		piso_actual => piso_actual,
