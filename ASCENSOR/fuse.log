@@ -1,21 +1,19 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/tb_convertidor_piso_actual_isim_beh.exe -prj C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/tb_convertidor_piso_actual_beh.prj work.tb_convertidor_piso_actual 
-ISim P.20131013 (signature 0x7708f090)
-Number of CPUs detected in this system: 4
-Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Running: C:\Xilins\14.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_isim_beh.exe -prj C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_beh.prj work.tb_gestor_display 
+ISim P.40xd (signature 0x7708f090)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/convertidor_piso_actual.vhd" into library work
-Parsing VHDL file "C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/tb_convertidor_piso_actual.vhd" into library work
+Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/gestor_display.vhd" into library work
+Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package std_logic_arith
-Compiling package std_logic_unsigned
-Compiling architecture dataflow of entity convertidor_piso_actual [convertidor_piso_actual_default]
-Compiling architecture behavior of entity tb_convertidor_piso_actual
+Compiling package numeric_std
+Compiling architecture behavioral of entity gestor_display [gestor_display_default]
+Compiling architecture behavior of entity tb_gestor_display
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 7 VHDL Units
-Built simulation executable C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/tb_convertidor_piso_actual_isim_beh.exe
-Fuse Memory Usage: 33868 KB
-Fuse CPU Usage: 562 ms
+Compiled 6 VHDL Units
+Built simulation executable C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_isim_beh.exe
+Fuse Memory Usage: 36240 KB
+Fuse CPU Usage: 421 ms
