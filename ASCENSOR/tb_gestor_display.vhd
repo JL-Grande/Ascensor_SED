@@ -1,6 +1,10 @@
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
  
 ENTITY tb_gestor_display IS
 END tb_gestor_display;
@@ -14,6 +18,7 @@ ARCHITECTURE behavior OF tb_gestor_display IS
          CLK : IN  std_logic;
          piso_now : IN  std_logic_vector(1 downto 0);
          piso_obj : IN  std_logic_vector(1 downto 0);
+         piso_seleccionado : OUT  std_logic_vector(1 downto 0);
          piso_actual : OUT  std_logic_vector(1 downto 0);
          accion : OUT  std_logic_vector(1 downto 0)
         );
@@ -26,6 +31,7 @@ ARCHITECTURE behavior OF tb_gestor_display IS
    signal piso_obj : std_logic_vector(1 downto 0) := (others => '0');
 
  	--Outputs
+   signal piso_seleccionado : std_logic_vector(1 downto 0);
    signal piso_actual : std_logic_vector(1 downto 0);
    signal accion : std_logic_vector(1 downto 0);
 
@@ -39,6 +45,7 @@ BEGIN
           CLK => CLK,
           piso_now => piso_now,
           piso_obj => piso_obj,
+          piso_seleccionado => piso_seleccionado,
           piso_actual => piso_actual,
           accion => accion
         );

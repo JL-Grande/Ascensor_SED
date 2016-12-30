@@ -6,6 +6,7 @@ entity gestor_display is
     Port ( CLK : in  STD_LOGIC;
            piso_now : in  STD_LOGIC_VECTOR (1 downto 0);
            piso_obj : in  STD_LOGIC_VECTOR (1 downto 0);
+			  piso_seleccionado : out STD_LOGIC_VECTOR (1 downto 0);
            piso_actual : out  STD_LOGIC_VECTOR (1 downto 0);
            accion : out  STD_LOGIC_VECTOR (1 downto 0)
 			);
@@ -19,6 +20,7 @@ gestor_display:process(clk)
 	begin
 		if rising_edge(clk) then
 			piso_actual <= piso_now;
+			piso_seleccionado <= piso_obj;
 			if (piso_now < piso_obj) then
 				accion <= "11";
 			elsif (piso_now > piso_obj) then

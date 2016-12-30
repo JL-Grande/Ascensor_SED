@@ -18,7 +18,7 @@ PORT(
 	  decoder_numeros: OUT std_logic_vector(3 DOWNTO 0);
 	  decoder_flechas: OUT std_logic_vector(3 DOWNTO 0);
 	  
-	  clk: in std_logic;										--clk:antes de entrar al divisorfrec. clock:después de salir del divisorfrec		
+	  clk: in std_logic;										--clk:antes de entrar al divisorfrec
 	  reset: in std_logic
 	  	  
 	  );
@@ -57,6 +57,7 @@ COMPONENT gestor_display
 		CLK : in  STD_LOGIC;
       piso_now : in  STD_LOGIC_VECTOR (1 downto 0);
       piso_obj : in  STD_LOGIC_VECTOR (1 downto 0);
+		piso_seleccionado : out STD_LOGIC_VECTOR (1 downto 0);
 		piso_actual : out  STD_LOGIC_VECTOR (1 downto 0);
 		accion : out  STD_LOGIC_VECTOR (1 DOWNTO 0)
 	);
@@ -94,6 +95,7 @@ END COMPONENT;
  signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
  signal sig_piso_objetivo:std_logic_vector (1 DOWNTO 0);
  signal code_piso_actual:std_logic_vector (1 DOWNTO 0);
+ signal code_piso_objetivo:std_logic_vector (1 DOWNTO 0);
  signal sig_action:std_logic_vector (1 DOWNTO 0);
  
 begin
@@ -128,6 +130,7 @@ inst_gestor_display:gestor_display port map(
 		CLK => inoutreloj,
       piso_now => sig_piso_actual,
       piso_obj => sig_piso_objetivo,
+		piso_seleccionado => code_piso_objetivo,
 		piso_actual => code_piso_actual,
 		accion => sig_action
 	);
@@ -140,7 +143,7 @@ inst_decoder: decoder port map(
 	seg_piso(0) <= '1';
 		
 inst_dec_piso_seleccion:dec_piso_seleccion port map(
-		piso_code => sig_piso_objetivo,
+		piso_code => code_piso_objetivo,
 		piso0 => piso0_sel,
 		piso1 => piso1_sel,
 		piso2 => piso2_sel,
