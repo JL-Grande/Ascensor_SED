@@ -5,5 +5,14 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="error" file="HDLCompiler" num="410" delta="unknown" >"C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual.vhd" Line 19: Expression has <arg fmt="%d" index="1">2</arg> elements ; expected <arg fmt="%d" index="2">3</arg>
+</msg>
+
+<msg type="error" file="HDLCompiler" num="410" delta="unknown" >"C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual.vhd" Line 20: Expression has <arg fmt="%d" index="1">2</arg> elements ; expected <arg fmt="%d" index="2">3</arg>
+</msg>
+
+<msg type="error" file="Simulator" num="777" delta="unknown" >Static elaboration of top level VHDL design unit <arg fmt="%s" index="1">tb_convertidor_piso_actual</arg> in library <arg fmt="%s" index="2">work</arg> failed
+</msg>
+
 </messages>
 

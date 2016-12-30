@@ -140,7 +140,7 @@ inst_decoder: decoder port map(
 	seg_piso(0) <= '1';
 		
 inst_dec_piso_seleccion:dec_piso_seleccion port map(
-		piso_code => code_piso_actual,
+		piso_code => sig_piso_objetivo,
 		piso0 => piso0_sel,
 		piso1 => piso1_sel,
 		piso2 => piso2_sel,

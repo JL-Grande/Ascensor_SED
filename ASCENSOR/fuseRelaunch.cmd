@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/tb_convertidor_piso_actual_isim_beh.exe" -prj "C:/Users/Lucas/EjerciciosXilinx/ASCENSOR/tb_convertidor_piso_actual_beh.prj" "work.tb_convertidor_piso_actual" 
+-intstyle "ise" -incremental -o "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual_isim_beh.exe" -prj "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual_beh.prj" "work.tb_convertidor_piso_actual" 
