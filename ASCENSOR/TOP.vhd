@@ -97,7 +97,16 @@ COMPONENT motor_puerta
 	);
 END COMPONENT;
 
+COMPONENT motor_ascensor
+	PORT (
+      accionar_motor : in  STD_LOGIC;
+      actuador_motor_subir : out  STD_LOGIC;
+		actuador_motor_bajar : out  STD_LOGIC
+	);
+END COMPONENT;
+
  signal sig_puerta:std_logic;
+ signal sig_ascensor:std_logic;
  signal inoutreloj:std_logic;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
@@ -171,6 +180,11 @@ inst_motor_puerta:motor_puerta port map(
       accionar_puerta => sig_puerta,
       actuador_puerta => puerta
 	);
-		
+
+inst_motor_ascensor:motor_ascensor port map(
+      accionar_ascensor => sig_ascensor,
+      actuador_motor_subir => motor_subir,
+		actuador_motor_bajar => motor_bajar,
+	);
 end Behavioral;
 
