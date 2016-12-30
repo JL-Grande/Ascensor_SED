@@ -18,7 +18,7 @@ PORT(
 	  decoder_numeros: OUT std_logic_vector(3 DOWNTO 0);
 	  decoder_flechas: OUT std_logic_vector(3 DOWNTO 0);
 	  
-	  clk,clock: in std_logic;										--clk:antes de entrar al divisorfrec. clock:después de salir del divisorfrec		
+	  clk: in std_logic;										--clk:antes de entrar al divisorfrec. clock:después de salir del divisorfrec		
 	  reset: in std_logic
 	  	  
 	  );
@@ -26,13 +26,6 @@ PORT(
 end TOP;
 
 architecture Behavioral of TOP is
-COMPONENT decoder
-	PORT (
-		code : in STD_LOGIC_VECTOR (3 downto 0);
-		led : OUT STD_LOGIC_VECTOR (6 downto 0);
-		dig_ctrl : OUT STD_LOGIC
-	);
- END COMPONENT;
 
 COMPONENT convertidor_piso_actual
 	PORT(
@@ -59,6 +52,24 @@ COMPONENT FSM
 	 );
 END COMPONENT;
 
+COMPONENT gestor_display
+	PORT (
+		CLK : in  STD_LOGIC;
+      piso_now : in  STD_LOGIC_VECTOR (1 downto 0);
+      piso_obj : in  STD_LOGIC_VECTOR (1 downto 0);
+		piso_actual : out  STD_LOGIC_VECTOR (1 downto 0);
+		accion : out  STD_LOGIC_VECTOR (1 DOWNTO 0)
+	);
+END COMPONENT;
+
+COMPONENT decoder
+	PORT (
+		code : in STD_LOGIC_VECTOR (1 downto 0);
+		led : OUT STD_LOGIC_VECTOR (6 downto 0);
+		dig_ctrl : OUT STD_LOGIC
+	);
+ END COMPONENT;
+
 COMPONENT dec_piso_seleccion
 	PORT (
 		piso_code : in  STD_LOGIC_VECTOR (1 downto 0);
@@ -71,7 +82,7 @@ END COMPONENT;
 
 COMPONENT dec_flechas
 	PORT (
-		action : in  STD_LOGIC;
+		action : in  STD_LOGIC_VECTOR (1 DOWNTO 0);
       led_flechas : out  STD_LOGIC_VECTOR (6 downto 0);
       flecha_ctrl : out  STD_LOGIC
 	);
@@ -81,8 +92,9 @@ END COMPONENT;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
- signal code_piso_actual:std_logic_vector (3 DOWNTO 0);
- signal sig_action:std_logic;
+ signal sig_piso_objetivo:std_logic_vector (1 DOWNTO 0);
+ signal code_piso_actual:std_logic_vector (1 DOWNTO 0);
+ signal sig_action:std_logic_vector (1 DOWNTO 0);
  
 begin
 
@@ -112,6 +124,14 @@ inst_FSM:FSM port map(
 		boton => inoutpiso_deseado
 		);
 		
+inst_gestor_display:gestor_display port map(
+		CLK => inoutreloj,
+      piso_now => sig_piso_actual,
+      piso_obj => sig_piso_objetivo,
+		piso_actual => code_piso_actual,
+		accion => sig_action
+	);
+		
 inst_decoder: decoder port map(
 		code => code_piso_actual,
 		led => seg_piso (7 downto 1),
@@ -120,7 +140,7 @@ inst_decoder: decoder port map(
 	seg_piso(0) <= '1';
 		
 inst_dec_piso_seleccion:dec_piso_seleccion port map(
-		piso_code => sig_piso_actual,
+		piso_code => code_piso_actual,
 		piso0 => piso0_sel,
 		piso1 => piso1_sel,
 		piso2 => piso2_sel,
