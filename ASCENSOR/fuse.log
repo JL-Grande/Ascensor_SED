@@ -1,21 +1,19 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_puerta_isim_beh.exe -prj C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_puerta_beh.prj tb_motor_puerta 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_ascensor_isim_beh.exe -prj C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_ascensor_beh.prj work.tb_motor_ascensor 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/motor_puerta.vhd" into library work
-WARNING:HDLCompiler:1369 - "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/motor_puerta.vhd" Line 14: Possible infinite loop; process does not have a wait statement
-Parsing VHDL file "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_puerta.vhd" into library work
+Parsing VHDL file "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/motor_ascensor.vhd" into library work
+WARNING:HDLCompiler:1369 - "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/motor_ascensor.vhd" Line 13: Possible infinite loop; process does not have a wait statement
+Parsing VHDL file "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_ascensor.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package numeric_std
-Compiling architecture behavioral of entity motor_puerta [motor_puerta_default]
-Compiling architecture behavior of entity tb_motor_puerta
+Compiling architecture behavioral of entity motor_ascensor [motor_ascensor_default]
+Compiling architecture behavior of entity tb_motor_ascensor
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 6 VHDL Units
-Built simulation executable C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_puerta_isim_beh.exe
-Fuse Memory Usage: 36160 KB
-Fuse CPU Usage: 530 ms
+Compiled 5 VHDL Units
+Built simulation executable C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_ascensor_isim_beh.exe
+Fuse Memory Usage: 29924 KB
+Fuse CPU Usage: 359 ms

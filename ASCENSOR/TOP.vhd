@@ -99,7 +99,7 @@ END COMPONENT;
 
 COMPONENT motor_ascensor
 	PORT (
-      accionar_motor : in  STD_LOGIC;
+      accionar_ascensor : in  STD_LOGIC;
       actuador_motor_subir : out  STD_LOGIC;
 		actuador_motor_bajar : out  STD_LOGIC
 	);
@@ -184,7 +184,7 @@ inst_motor_puerta:motor_puerta port map(
 inst_motor_ascensor:motor_ascensor port map(
       accionar_ascensor => sig_ascensor,
       actuador_motor_subir => motor_subir,
-		actuador_motor_bajar => motor_bajar,
+		actuador_motor_bajar => motor_bajar
 	);
 end Behavioral;
 

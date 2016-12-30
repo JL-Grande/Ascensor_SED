@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_puerta_isim_beh.exe" -prj "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_puerta_beh.prj" "tb_motor_puerta" 
+-intstyle "ise" -incremental -o "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_ascensor_isim_beh.exe" -prj "C:/Users/Admin/Documents/GitHub/Ascensor_SED/ASCENSOR/tb_motor_ascensor_beh.prj" "work.tb_motor_ascensor" 
