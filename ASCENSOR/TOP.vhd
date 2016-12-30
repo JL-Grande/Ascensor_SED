@@ -88,7 +88,16 @@ COMPONENT dec_flechas
       flecha_ctrl : out  STD_LOGIC
 	);
 END COMPONENT;
- 
+
+COMPONENT motor_puerta
+	PORT (
+		nivel : in  STD_LOGIC;
+      accionar_puerta : in  STD_LOGIC;
+      actuador_puerta : out  STD_LOGIC
+	);
+END COMPONENT;
+
+ signal sig_puerta:std_logic;
  signal inoutreloj:std_logic;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
@@ -148,7 +157,7 @@ inst_dec_piso_seleccion:dec_piso_seleccion port map(
 		piso1 => piso1_sel,
 		piso2 => piso2_sel,
 		piso3 => piso3_sel
-		);
+	);
 		
 inst_dec_flechas: dec_flechas port map(
 		action => sig_action,
@@ -156,6 +165,12 @@ inst_dec_flechas: dec_flechas port map(
 		flecha_ctrl => flecha_ctrl
 	);
 	seg_flechas(0) <= '1';
+	
+inst_motor_puerta:motor_puerta port map(
+		nivel => celula,
+      accionar_puerta => sig_puerta,
+      actuador_puerta => puerta
+	);
 		
 end Behavioral;
 
