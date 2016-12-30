@@ -2,7 +2,6 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 USE ieee.std_logic_arith.ALL;
 USE ieee.std_logic_unsigned.ALL;
-use IEEE.NUMERIC_STD.ALL;
 
 entity dec_piso_seleccion is
     Port ( piso_code : in  STD_LOGIC_VECTOR (1 downto 0);

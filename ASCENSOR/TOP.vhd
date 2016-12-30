@@ -12,8 +12,8 @@ PORT(
 	  
 	  puerta, motor_subir, motor_bajar: OUT std_logic;	   --SALIDAS TOP
 	  piso0_sel, piso1_sel, piso2_sel, piso3_sel: OUT std_logic;
-	  seg_piso: OUT std_logic_vector(7 DOWNTO 0);
-	  digit_ctrl : OUT std_logic;
+	  seg_piso, seg_flechas: OUT std_logic_vector(7 DOWNTO 0);
+	  digit_ctrl, flecha_ctrl : OUT std_logic;
 	  
 	  decoder_numeros: OUT std_logic_vector(3 DOWNTO 0);
 	  decoder_flechas: OUT std_logic_vector(3 DOWNTO 0);
@@ -68,22 +68,25 @@ COMPONENT dec_piso_seleccion
       piso3 : out  STD_LOGIC
 	);
 END COMPONENT;
+
+COMPONENT dec_flechas
+	PORT (
+		action : in  STD_LOGIC;
+      led_flechas : out  STD_LOGIC_VECTOR (6 downto 0);
+      flecha_ctrl : out  STD_LOGIC
+	);
+END COMPONENT;
  
  signal inoutreloj:std_logic;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
  signal code_piso_actual:std_logic_vector (3 DOWNTO 0);
+ signal sig_action:std_logic;
  
 begin
 
-inst_decoder: decoder port map(
 
-		code => code_piso_actual,
-		led => seg_piso (7 downto 1),
-		dig_ctrl => digit_ctrl
-	);
-	seg_piso(0) <= '1';
 
 inst_convertidor_piso_actual:convertidor_piso_actual port map(
 		piso_actual => piso_actual,
@@ -109,6 +112,13 @@ inst_FSM:FSM port map(
 		boton => inoutpiso_deseado
 		);
 		
+inst_decoder: decoder port map(
+		code => code_piso_actual,
+		led => seg_piso (7 downto 1),
+		dig_ctrl => digit_ctrl
+	);
+	seg_piso(0) <= '1';
+		
 inst_dec_piso_seleccion:dec_piso_seleccion port map(
 		piso_code => sig_piso_actual,
 		piso0 => piso0_sel,
@@ -116,6 +126,13 @@ inst_dec_piso_seleccion:dec_piso_seleccion port map(
 		piso2 => piso2_sel,
 		piso3 => piso3_sel
 		);
+		
+inst_dec_flechas: dec_flechas port map(
+		action => sig_action,
+		led_flechas => seg_flechas (7 downto 1),
+		flecha_ctrl => flecha_ctrl
+	);
+	seg_flechas(0) <= '1';
 		
 end Behavioral;
 
