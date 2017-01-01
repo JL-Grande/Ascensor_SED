@@ -91,7 +91,7 @@ END COMPONENT;
 
 COMPONENT motor_puerta
 	PORT (
-		celula : in  STD_LOGIC;
+  		celula : in  STD_LOGIC;
       accionar_puerta : in  STD_LOGIC;
       actuador_puerta : out  STD_LOGIC
 	);
@@ -107,10 +107,10 @@ COMPONENT motor_ascensor
 END COMPONENT;
 
 
- signal sig_puerta:std_logic;  --Señal para motor_puerta
- signal sig_subir:std_logic;	 --Señal para motor_subir 
- signal sig_bajar:std_logic; 	 --Señal para motor_bajar
- signal inoutreloj:std_logic;  --Señal del divisor de frecuencia
+ signal sig_puerta:std_logic;  --Seï¿½al para motor_puerta
+ signal sig_subir:std_logic;	 --Seï¿½al para motor_subir 
+ signal sig_bajar:std_logic; 	 --Seï¿½al para motor_bajar
+ signal inoutreloj:std_logic;  --Seï¿½al del divisor de frecuencia
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
@@ -179,7 +179,7 @@ inst_dec_flechas: dec_flechas port map(
 	seg_flechas(0) <= '1';
 	
 inst_motor_puerta:motor_puerta port map(
-		celula => celula,
+	  	celula => celula,
       accionar_puerta => sig_puerta,
       actuador_puerta => puerta
 	);

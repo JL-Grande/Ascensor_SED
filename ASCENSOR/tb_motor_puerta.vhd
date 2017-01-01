@@ -59,7 +59,7 @@ BEGIN
 		WAIT FOR 20 ns;
 		
 		ASSERT false
-			REPORT "Simulación finalizada. Test superado."
+			REPORT "SimulaciÃ³n finalizada. Test superado."
 			SEVERITY FAILURE;
    end process;
 
