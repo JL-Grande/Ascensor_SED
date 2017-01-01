@@ -91,14 +91,26 @@ END COMPONENT;
 
 COMPONENT motor_puerta
 	PORT (
-		nivel : in  STD_LOGIC;
+  		celula : in  STD_LOGIC;
       accionar_puerta : in  STD_LOGIC;
       actuador_puerta : out  STD_LOGIC
 	);
 END COMPONENT;
 
- signal sig_puerta:std_logic;
- signal inoutreloj:std_logic;
+COMPONENT motor_ascensor 
+	PORT(
+		accionar_bajar: in  STD_LOGIC;
+		accionar_subir: in  STD_LOGIC;
+		motor_subir: out  STD_LOGIC;
+		motor_bajar : out  STD_LOGIC
+	);
+END COMPONENT;
+
+
+ signal sig_puerta:std_logic;  --Se�al para motor_puerta
+ signal sig_subir:std_logic;	 --Se�al para motor_subir 
+ signal sig_bajar:std_logic; 	 --Se�al para motor_bajar
+ signal inoutreloj:std_logic;  --Se�al del divisor de frecuencia
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
@@ -167,10 +179,16 @@ inst_dec_flechas: dec_flechas port map(
 	seg_flechas(0) <= '1';
 	
 inst_motor_puerta:motor_puerta port map(
-		nivel => celula,
+	  	celula => celula,
       accionar_puerta => sig_puerta,
       actuador_puerta => puerta
 	);
 		
+inst_motor_ascensor:motor_ascensor port map(
+		accionar_bajar => sig_bajar,
+		accionar_subir => sig_subir,
+		motor_subir => motor_subir,
+		motor_bajar => motor_bajar
+	);
 end Behavioral;
 

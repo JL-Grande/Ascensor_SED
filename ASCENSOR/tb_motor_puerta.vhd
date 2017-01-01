@@ -11,7 +11,7 @@ ARCHITECTURE behavior OF tb_motor_puerta IS
  
     COMPONENT motor_puerta
     PORT(
-         nivel : IN  std_logic;
+         celula : IN  std_logic;
          accionar_puerta : IN  std_logic;
          actuador_puerta : OUT  std_logic
         );
@@ -19,7 +19,7 @@ ARCHITECTURE behavior OF tb_motor_puerta IS
     
 
    --Inputs
-   signal nivel : std_logic := '0';
+   signal celula : std_logic := '0';
    signal accionar_puerta : std_logic := '0';
 
  	--Outputs
@@ -29,7 +29,7 @@ BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: motor_puerta PORT MAP (
-          nivel => nivel,
+          celula => celula,
           accionar_puerta => accionar_puerta,
           actuador_puerta => actuador_puerta
         );
@@ -37,29 +37,29 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-		nivel <= '0';
+		celula <= '0';
 		WAIT FOR 5 ns;
 		accionar_puerta <= '0';
 		WAIT FOR 20 ns;
-		nivel <= '0';
+		celula <= '0';
 		WAIT FOR 5 ns;
 		accionar_puerta <= '1';
 		WAIT FOR 20 ns;
-		nivel <= '1';
+		celula <= '1';
 		WAIT FOR 5 ns;
 		accionar_puerta <= '1';
 		WAIT FOR 20 ns;
-		nivel <= '1';
+		celula <= '1';
 		WAIT FOR 5 ns;
 		accionar_puerta <= '0';
 		WAIT FOR 20 ns;
-		nivel <= '0';
+		celula <= '0';
 		WAIT FOR 5 ns;
 		accionar_puerta <= '0';
 		WAIT FOR 20 ns;
 		
 		ASSERT false
-			REPORT "Simulación finalizada. Test superado."
+			REPORT "SimulaciÃ³n finalizada. Test superado."
 			SEVERITY FAILURE;
    end process;
 
