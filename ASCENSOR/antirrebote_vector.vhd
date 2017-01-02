@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -44,4 +43,3 @@ inst_antirrebote_4:antirrebote port map(
 		);
 
 end Dataflow;
-

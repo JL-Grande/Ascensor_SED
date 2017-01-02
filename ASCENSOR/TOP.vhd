@@ -15,9 +15,6 @@ PORT(
 	  seg_piso, seg_flechas: OUT std_logic_vector(7 DOWNTO 0);
 	  digit_ctrl, flecha_ctrl : OUT std_logic;
 	  
-	  decoder_numeros: OUT std_logic_vector(3 DOWNTO 0);
-	  decoder_flechas: OUT std_logic_vector(3 DOWNTO 0);
-	  
 	  clk: in std_logic;										--clk:antes de entrar al divisorfrec
 	  reset: in std_logic
 	  	  
@@ -48,8 +45,10 @@ COMPONENT divisorfrec
  
 COMPONENT FSM
 	PORT(
-	 clock,reset,nivel, celula, abierto, cerrado:  IN std_logic;
-	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0)
+	 clock,reset,nivel,abierto, cerrado:  IN std_logic;
+	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+	 accionador_puerta: out STD_LOGIC;
+	 accionador_subir, accionador_bajar: out STD_LOGIC
 	 );
 END COMPONENT;
 
@@ -107,7 +106,6 @@ COMPONENT motor_ascensor
 	);
 END COMPONENT;
 
-
  signal sig_puerta:std_logic;  --Senal para motor_puerta
  signal sig_subir:std_logic;	 --Senal para motor_subir 
  signal sig_bajar:std_logic; 	 --Senal para motor_bajar
@@ -137,14 +135,16 @@ inst_divisorfrec:divisorfrec port map(
 		);
 		
 inst_FSM:FSM port map(
-		celula => celula,
 		abierto => abierto,
 		cerrado => cerrado,
 		clock => inoutreloj,
 		reset => reset,
 		nivel => nivel,
 		piso => inoutpiso_actual,
-		boton => inoutpiso_deseado
+		boton => inoutpiso_deseado,
+		accionador_puerta => sig_puerta,
+	   accionador_subir => sig_subir,
+		accionador_bajar => sig_bajar
 		);
 		
 inst_gestor_display:gestor_display port map(

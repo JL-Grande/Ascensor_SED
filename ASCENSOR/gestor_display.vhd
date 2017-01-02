@@ -51,4 +51,3 @@ gestor_display:process(clk)
 	end process;
 
 end Behavioral;
-

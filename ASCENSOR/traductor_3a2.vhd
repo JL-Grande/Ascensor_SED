@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -19,4 +18,3 @@ WITH vector_IN SELECT
 									"00" WHEN others;
 
 end Behavioral;
-
