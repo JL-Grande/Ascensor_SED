@@ -14,7 +14,8 @@ Compiling package numeric_std
 Compiling architecture behavioral of entity motor_puerta [motor_puerta_default]
 Compiling architecture behavior of entity tb_motor_puerta
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 6 VHDL Units
 Built simulation executable C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_motor_puerta_isim_beh.exe
-Fuse Memory Usage: 36240 KB
-Fuse CPU Usage: 530 ms
+Fuse Memory Usage: 36212 KB
+Fuse CPU Usage: 515 ms

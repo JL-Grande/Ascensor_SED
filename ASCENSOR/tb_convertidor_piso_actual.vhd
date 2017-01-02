@@ -1,6 +1,6 @@
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
  
 ENTITY tb_convertidor_piso_actual IS
 END tb_convertidor_piso_actual;
@@ -11,6 +11,7 @@ ARCHITECTURE behavior OF tb_convertidor_piso_actual IS
  
     COMPONENT convertidor_piso_actual
     PORT(
+         clk : IN  std_logic;
          piso_actual : IN  std_logic_vector(3 downto 0);
          boton_seleccionado : IN  std_logic_vector(3 downto 0);
          piso_actual_convertido : OUT  std_logic_vector(2 downto 0);
@@ -20,31 +21,72 @@ ARCHITECTURE behavior OF tb_convertidor_piso_actual IS
     
 
    --Inputs
+   signal clk : std_logic := '0';
    signal piso_actual : std_logic_vector(3 downto 0) := (others => '0');
    signal boton_seleccionado : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
    signal piso_actual_convertido : std_logic_vector(2 downto 0);
    signal boton_seleccionado_convertido : std_logic_vector(2 downto 0);
+
+   -- Clock period definitions
+   constant clk_period : time := 10 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: convertidor_piso_actual PORT MAP (
+          clk => clk,
           piso_actual => piso_actual,
           boton_seleccionado => boton_seleccionado,
           piso_actual_convertido => piso_actual_convertido,
           boton_seleccionado_convertido => boton_seleccionado_convertido
         );
 
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= '0';
+		wait for clk_period/2;
+		clk <= '1';
+		wait for clk_period/2;
+   end process;
+ 
 
    -- Stimulus process
    stim_proc: process
-   begin		
-
-      -- insert stimulus here 
-
-      wait;
+   begin	
+	
+	boton_seleccionado <= "0000";
+	piso_actual <= "0100";
+	WAIT FOR 40 ns;
+	boton_seleccionado <= "0100";
+	piso_actual <= "1000";
+	WAIT FOR 55 ns;
+	boton_seleccionado <= "0010";
+	piso_actual  <= "0010";
+	WAIT FOR 2 ns;
+	boton_seleccionado <= "0101";
+	piso_actual <= "0011";
+	WAIT FOR 50 ns;
+	boton_seleccionado <= "1000";
+	piso_actual  <= "0100";
+	WAIT FOR 4 ns;
+	boton_seleccionado <= "0110";
+	piso_actual  <= "0010";
+	WAIT FOR 2 ns;
+	boton_seleccionado <= "1001";
+	piso_actual  <= "1001";
+	WAIT FOR 3 ns;
+	boton_seleccionado <= "0010";
+	piso_actual  <= "1000";
+	WAIT FOR 20 ns;
+	boton_seleccionado <= "1101";
+	piso_actual <= "0010";
+	WAIT FOR 80 ns;
+	ASSERT false
+			REPORT "Simulación finalizada. Test superado."
+			SEVERITY FAILURE;
    end process;
 
 END;

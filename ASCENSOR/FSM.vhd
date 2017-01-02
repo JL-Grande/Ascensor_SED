@@ -61,5 +61,6 @@ BEGIN                -- y el piso donde se encuentra
      END IF;
    END IF;
 END PROCESS memoria;
+
 end Behavioral;
 
