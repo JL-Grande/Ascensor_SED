@@ -1,26 +1,22 @@
-Running: C:\Xilins\14.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual_isim_beh.exe -prj C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual_beh.prj work.tb_convertidor_piso_actual 
+Running: C:\Xilins\14.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_isim_beh.exe -prj C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_beh.prj work.tb_gestor_display 
 ISim P.40xd (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/antirrebote.vhd" into library work
-Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/antirrebote_vector.vhd" into library work
-Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/convertidor_piso_actual.vhd" into library work
-Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual.vhd" into library work
+Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/traductor_3a2.vhd" into library work
+Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/gestor_display.vhd" into library work
+Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package std_logic_arith
-Compiling package std_logic_unsigned
 Compiling package numeric_std
-Compiling architecture behavioral of entity antirrebote [antirrebote_default]
-Compiling architecture dataflow of entity antirrebote_vector [antirrebote_vector_default]
-Compiling architecture dataflow of entity convertidor_piso_actual [convertidor_piso_actual_default]
-Compiling architecture behavior of entity tb_convertidor_piso_actual
+Compiling architecture behavioral of entity traductor_3a2 [traductor_3a2_default]
+Compiling architecture behavioral of entity gestor_display [gestor_display_default]
+Compiling architecture behavior of entity tb_gestor_display
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 12 VHDL Units
-Built simulation executable C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_convertidor_piso_actual_isim_beh.exe
-Fuse Memory Usage: 37192 KB
-Fuse CPU Usage: 546 ms
+Compiled 8 VHDL Units
+Built simulation executable C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_isim_beh.exe
+Fuse Memory Usage: 36016 KB
+Fuse CPU Usage: 467 ms

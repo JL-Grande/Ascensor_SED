@@ -56,8 +56,8 @@ END COMPONENT;
 COMPONENT gestor_display
 	PORT (
 		CLK : in  STD_LOGIC;
-      piso_now : in  STD_LOGIC_VECTOR (1 downto 0);
-      piso_obj : in  STD_LOGIC_VECTOR (1 downto 0);
+      piso_now_3 : in  STD_LOGIC_VECTOR (2 downto 0);
+      piso_obj_3 : in  STD_LOGIC_VECTOR (2 downto 0);
 		piso_seleccionado : out STD_LOGIC_VECTOR (1 downto 0);
 		piso_actual : out  STD_LOGIC_VECTOR (1 downto 0);
 		accion : out  STD_LOGIC_VECTOR (1 DOWNTO 0)
@@ -108,14 +108,12 @@ COMPONENT motor_ascensor
 END COMPONENT;
 
 
- signal sig_puerta:std_logic;  --Se�al para motor_puerta
- signal sig_subir:std_logic;	 --Se�al para motor_subir 
- signal sig_bajar:std_logic; 	 --Se�al para motor_bajar
- signal inoutreloj:std_logic;  --Se�al del divisor de frecuencia
+ signal sig_puerta:std_logic;  --Senal para motor_puerta
+ signal sig_subir:std_logic;	 --Senal para motor_subir 
+ signal sig_bajar:std_logic; 	 --Senal para motor_bajar
+ signal inoutreloj:std_logic;  --Senal del divisor de frecuencia
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
- signal sig_piso_actual:std_logic_vector (1 DOWNTO 0);
- signal sig_piso_objetivo:std_logic_vector (1 DOWNTO 0);
  signal code_piso_actual:std_logic_vector (1 DOWNTO 0);
  signal code_piso_objetivo:std_logic_vector (1 DOWNTO 0);
  signal sig_action:std_logic_vector (1 DOWNTO 0);
@@ -151,8 +149,8 @@ inst_FSM:FSM port map(
 		
 inst_gestor_display:gestor_display port map(
 		CLK => inoutreloj,
-      piso_now => sig_piso_actual,
-      piso_obj => sig_piso_objetivo,
+      piso_now_3 => inoutpiso_actual,
+      piso_obj_3 => inoutpiso_deseado,
 		piso_seleccionado => code_piso_objetivo,
 		piso_actual => code_piso_actual,
 		accion => sig_action
