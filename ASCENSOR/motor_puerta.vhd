@@ -13,7 +13,7 @@ architecture Behavioral of motor_puerta is
 begin
 	motor_puerta:process
 	begin
-		if (celula='1' AND accionar_puerta='1') then --Si hay obst�culo entonces la puerta se abrir�.
+		if (celula='1' AND accionar_puerta='1') then --Si hay obstaculo entonces la puerta se abrira.
 			actuador_puerta <= '1';
 		elsif (celula='0' OR accionar_puerta='0') then
 			actuador_puerta <= '0';

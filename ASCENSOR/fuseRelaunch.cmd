@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_isim_beh.exe" -prj "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_gestor_display_beh.prj" "work.tb_gestor_display" 
+-intstyle "ise" -incremental -o "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_motor_puerta_isim_beh.exe" -prj "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_motor_puerta_beh.prj" "work.tb_motor_puerta" 

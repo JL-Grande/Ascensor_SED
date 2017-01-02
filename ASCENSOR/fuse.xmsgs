@@ -5,5 +5,8 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="1369" delta="unknown" >"C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/motor_puerta.vhd" Line 14: Possible infinite loop; process does not have a wait statement
+</msg>
+
 </messages>
 
