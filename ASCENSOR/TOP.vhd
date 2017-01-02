@@ -58,7 +58,7 @@ COMPONENT gestor_display
 		CLK : in  STD_LOGIC;
       piso_now_3 : in  STD_LOGIC_VECTOR (2 downto 0);
       piso_obj_3 : in  STD_LOGIC_VECTOR (2 downto 0);
-		piso_seleccionado : out STD_LOGIC_VECTOR (1 downto 0);
+		piso_seleccionado : out STD_LOGIC_VECTOR (2 downto 0);
 		piso_actual : out  STD_LOGIC_VECTOR (1 downto 0);
 		accion : out  STD_LOGIC_VECTOR (1 DOWNTO 0)
 	);
@@ -74,7 +74,7 @@ COMPONENT decoder
 
 COMPONENT dec_piso_seleccion
 	PORT (
-		piso_code : in  STD_LOGIC_VECTOR (1 downto 0);
+		piso_code : in  STD_LOGIC_VECTOR (2 downto 0);
       piso0 : out  STD_LOGIC;
       piso1 : out  STD_LOGIC;
       piso2 : out  STD_LOGIC;
@@ -115,7 +115,7 @@ END COMPONENT;
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
  signal code_piso_actual:std_logic_vector (1 DOWNTO 0);
- signal code_piso_objetivo:std_logic_vector (1 DOWNTO 0);
+ signal code_piso_objetivo:std_logic_vector (2 DOWNTO 0);
  signal sig_action:std_logic_vector (1 DOWNTO 0);
  
 begin
