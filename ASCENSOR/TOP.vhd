@@ -29,6 +29,7 @@ architecture Behavioral of TOP is
 
 COMPONENT convertidor_piso_actual
 	PORT(
+		clk : in STD_LOGIC;
 		piso_actual: IN std_logic_vector(3 DOWNTO 0);
 		boton_seleccionado: IN std_logic_vector(3 DOWNTO 0);
 		
@@ -124,6 +125,7 @@ begin
 
 
 inst_convertidor_piso_actual:convertidor_piso_actual port map(
+		clk => clk,
 		piso_actual => piso_actual,
 		boton_seleccionado => boton_seleccionado,
 		piso_actual_convertido => inoutpiso_actual,
