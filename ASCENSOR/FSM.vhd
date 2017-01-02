@@ -1,14 +1,14 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 USE ieee.std_logic_arith.ALL;
 USE ieee.std_logic_unsigned.ALL;
 
-
 entity FSM is
 	PORT(
-	 clock,reset,nivel, celula, abierto, cerrado:  IN std_logic;
-	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0)
+	 clock,reset,nivel, abierto, cerrado:  IN std_logic;
+	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+	 accionador_puerta: out STD_LOGIC;
+	 accionador_subir, accionador_bajar: out STD_LOGIC
 	 );
 end FSM;
 
@@ -46,6 +46,45 @@ PROCESS(reset,clock)
 		END IF;
 	END PROCESS estados;
 	
+	
+salida:
+PROCESS(presente,piso,bot,piso_ini)
+BEGIN
+   CASE presente IS
+     WHEN inicial=>   -- Al encender puede que este entre dos pisos
+        IF piso/="001" THEN
+            accionador_subir<='0';  -- Bajamos
+            accionador_bajar<='1';
+        END IF;
+        accionador_puerta<='0';     -- Cerrada
+		  
+     WHEN parado=>
+        accionador_subir<='0';  -- Parado
+        accionador_bajar<='0';
+        accionador_puerta<='1'; -- Abierta
+		  
+     WHEN cerrando=>
+        accionador_subir<='0';  -- Parado
+        accionador_bajar<='0';
+        accionador_puerta<='0';              
+		  		  
+     WHEN marcha=>
+        IF bot<piso_ini THEN
+            accionador_subir<='0';  -- Bajamos
+            accionador_bajar<='1';
+        ELSE
+            accionador_subir<='1';  -- Subimos
+            accionador_bajar<='0';
+        END IF;
+        accionador_puerta<='0';     -- Cerrada
+		  
+     WHEN abriendo=>
+        accionador_subir<='0';  -- Parado
+        accionador_bajar<='0';
+        accionador_puerta<='1'; -- Abrir
+   END CASE;
+END PROCESS salida; 
+		  
 memoria:
 PROCESS(reset,clock)   -- Captura la pulsación del botón
 BEGIN                -- y el piso donde se encuentra
@@ -63,4 +102,3 @@ BEGIN                -- y el piso donde se encuentra
 END PROCESS memoria;
 
 end Behavioral;
-

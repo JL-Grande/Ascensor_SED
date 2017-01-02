@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -16,7 +15,7 @@ end motor_ascensor;
 architecture Behavioral of motor_ascensor is
 
 begin
-	motor_ascensor:process
+	motor_ascensor:process(accionar_bajar,accionar_subir)
 	begin
 		if (accionar_subir ='1') then 
 			motor_subir <= '1';
@@ -30,4 +29,3 @@ begin
 		
 	end process;
 end Behavioral;
-

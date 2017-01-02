@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 USE ieee.std_logic_arith.ALL;
@@ -32,4 +31,3 @@ begin
 	end process;
 	salida <=temporal;
 end Behavioral;
-
