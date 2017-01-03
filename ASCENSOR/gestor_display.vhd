@@ -16,6 +16,7 @@ architecture Behavioral of gestor_display is
 
 COMPONENT traductor_3a2
 	Port (
+		clk : in  STD_LOGIC;
 		vector_IN : in  STD_LOGIC_VECTOR (2 downto 0);
       vector_OUT : out  STD_LOGIC_VECTOR (1 downto 0));
 END COMPONENT;
@@ -26,11 +27,13 @@ signal piso_obj_2:STD_LOGIC_VECTOR (1 downto 0);
 begin
 
 inst_traductor_3a2_now:traductor_3a2 port map(
+		clk => CLK,
 		vector_IN => piso_now_3,
 		vector_OUT => piso_now_2
 		);
 		
 inst_traductor_3a2_obj:traductor_3a2 port map(
+		clk => CLK,
 		vector_IN => piso_obj_3,
 		vector_OUT => piso_obj_2
 		);
@@ -40,7 +43,9 @@ gestor_display:process(clk)
 		if rising_edge(clk) then
 			piso_actual <= piso_now_2;
 			piso_seleccionado <= piso_obj_3;
-			if (piso_now_2 < piso_obj_2) then
+			if (piso_obj_3 = "000") then
+				accion <= "01";
+			elsif (piso_now_2 < piso_obj_2) then
 				accion <= "11";
 			elsif (piso_now_2 > piso_obj_2) then
 				accion <= "00";

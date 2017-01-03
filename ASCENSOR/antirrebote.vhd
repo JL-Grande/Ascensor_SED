@@ -5,6 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity antirrebote is
     Port ( CLK : in  STD_LOGIC;					--Entrada de reloj sin pasar por el divisor
+			  RST : in  STD_LOGIC;
            logic_IN : in  STD_LOGIC;
            logic_OUT : out  STD_LOGIC);
 end antirrebote;
@@ -17,10 +18,11 @@ signal logic_prev   : std_logic := '0';		--almacena estado del boton, se usa com
 signal contador    : std_logic_vector(contador_SIZE downto 0) := (others => '0');	--vector contador para que pase el tiempo antirrebote
 	 
 begin
-    process(CLK)
+    process(CLK,RST)
     begin
-	 
-	 if (CLK'event and CLK='1') then									--Si hay flanco de reloj
+	 if (RST='1') then
+		logic_OUT <= logic_IN;
+	 elsif (CLK'event and CLK='1') then									--Si hay flanco de reloj
 		 if (logic_prev XOR logic_in)='1' then							--Si 	la entrada es diferente al estado previo almacenado
 			 contador <= (others => '0');										--Contador a cero
 		 	 logic_prev <= logic_in;											--La entrada pasa a la variable de transicion

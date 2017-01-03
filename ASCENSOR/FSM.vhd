@@ -6,7 +6,8 @@ USE ieee.std_logic_unsigned.ALL;
 entity FSM is
 	PORT(
 	 clock,reset,nivel, abierto, cerrado:  IN std_logic;
-	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+	 piso,boton: IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+	 boton_memoria: out STD_LOGIC_VECTOR (2 DOWNTO 0);
 	 accionador_puerta: out STD_LOGIC;
 	 accionador_subir, accionador_bajar: out STD_LOGIC
 	 );
@@ -50,6 +51,7 @@ PROCESS(reset,clock)
 salida:
 PROCESS(presente,piso,bot,piso_ini)
 BEGIN
+	boton_memoria<=bot;
    CASE presente IS
      WHEN inicial=>   -- Al encender puede que este entre dos pisos
         IF piso/="001" THEN

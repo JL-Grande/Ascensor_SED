@@ -3,10 +3,10 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_arith.ALL;
 USE ieee.std_logic_unsigned.ALL;
 
-
 entity convertidor_piso_actual is
 	PORT(
 		clk : in STD_LOGIC;
+		rst : in  STD_LOGIC;
 		piso_actual: IN std_logic_vector(3 DOWNTO 0);
 		boton_seleccionado: IN std_logic_vector(3 DOWNTO 0);
 		
@@ -20,6 +20,7 @@ architecture dataflow of convertidor_piso_actual is
 COMPONENT antirrebote_vector
 	PORT (
 		CLK : in  STD_LOGIC;
+		RST : in  STD_LOGIC;
       vector_IN : in  STD_LOGIC_VECTOR (3 downto 0);
 		vector_OUT : out  STD_LOGIC_VECTOR (3 downto 0));
  END COMPONENT;
@@ -30,6 +31,7 @@ begin
 
 inst_antirrebote_vector:antirrebote_vector port map(
 		CLK => clk,
+		RST => rst,
 		vector_IN => boton_seleccionado,
 		vector_OUT => boton_selec_antirrebote
 		);
@@ -47,4 +49,3 @@ inst_antirrebote_vector:antirrebote_vector port map(
 															"100" WHEN "1000",
 															"000" WHEN others;
 end dataflow;
-
