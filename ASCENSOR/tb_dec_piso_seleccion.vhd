@@ -1,7 +1,5 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
  
 ENTITY tb_dec_piso_seleccion IS
 END tb_dec_piso_seleccion;
@@ -12,7 +10,7 @@ ARCHITECTURE behavior OF tb_dec_piso_seleccion IS
  
     COMPONENT dec_piso_seleccion
     PORT(
-         piso_code : IN  std_logic_vector(1 downto 0);
+         piso_code : IN  std_logic_vector(2 downto 0);
          piso0 : OUT  std_logic;
          piso1 : OUT  std_logic;
          piso2 : OUT  std_logic;
@@ -22,7 +20,7 @@ ARCHITECTURE behavior OF tb_dec_piso_seleccion IS
     
 
    --Inputs
-   signal piso_code : std_logic_vector(1 downto 0) := (others => '0');
+   signal piso_code : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
    signal piso0 : std_logic;
@@ -41,26 +39,25 @@ BEGIN
           piso3 => piso3
         );
 
-
    -- Stimulus process
    stim_proc: process
-   begin		
-		
-		piso_code <= "00";
+   begin	
+	
+		piso_code <= "001";
 		WAIT FOR 20 ns;
-		piso_code <= "01";
+		piso_code <= "010";
 		WAIT FOR 20 ns;
-		piso_code <= "10";
+		piso_code <= "011";
 		WAIT FOR 20 ns;
-		piso_code <= "11";
+		piso_code <= "100";
 		WAIT FOR 20 ns;
-		piso_code <= "01";
+		piso_code <= "000";
 		WAIT FOR 20 ns;
 		
 		ASSERT false
 			REPORT "Simulación finalizada. Test superado."
 			SEVERITY FAILURE;
-	
+			
    end process;
 
 END;

@@ -1,7 +1,6 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
- 
+
 ENTITY tb_convertidor_piso_actual IS
 END tb_convertidor_piso_actual;
  
@@ -12,6 +11,7 @@ ARCHITECTURE behavior OF tb_convertidor_piso_actual IS
     COMPONENT convertidor_piso_actual
     PORT(
          clk : IN  std_logic;
+         rst : IN  std_logic;
          piso_actual : IN  std_logic_vector(3 downto 0);
          boton_seleccionado : IN  std_logic_vector(3 downto 0);
          piso_actual_convertido : OUT  std_logic_vector(2 downto 0);
@@ -22,6 +22,7 @@ ARCHITECTURE behavior OF tb_convertidor_piso_actual IS
 
    --Inputs
    signal clk : std_logic := '0';
+   signal rst : std_logic := '0';
    signal piso_actual : std_logic_vector(3 downto 0) := (others => '0');
    signal boton_seleccionado : std_logic_vector(3 downto 0) := (others => '0');
 
@@ -37,6 +38,7 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: convertidor_piso_actual PORT MAP (
           clk => clk,
+          rst => rst,
           piso_actual => piso_actual,
           boton_seleccionado => boton_seleccionado,
           piso_actual_convertido => piso_actual_convertido,
@@ -55,14 +57,19 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin	
+   begin		
 	
+	rst <= '0';
 	boton_seleccionado <= "0000";
 	piso_actual <= "0100";
 	WAIT FOR 40 ns;
 	boton_seleccionado <= "0100";
 	piso_actual <= "1000";
-	WAIT FOR 55 ns;
+	WAIT FOR 10 ns;
+	RST <= '1';
+	WAIT FOR 10 ns;
+	RST <= '0';
+	WAIT FOR 45 ns;
 	boton_seleccionado <= "0010";
 	piso_actual  <= "0010";
 	WAIT FOR 2 ns;
@@ -84,9 +91,11 @@ BEGIN
 	boton_seleccionado <= "1101";
 	piso_actual <= "0010";
 	WAIT FOR 80 ns;
+	
 	ASSERT false
 			REPORT "Simulación finalizada. Test superado."
 			SEVERITY FAILURE;
+			
    end process;
 
 END;

@@ -1,7 +1,7 @@
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
- 
+
 ENTITY tb_antirrebote_vector IS
 END tb_antirrebote_vector;
  
@@ -12,6 +12,7 @@ ARCHITECTURE behavior OF tb_antirrebote_vector IS
     COMPONENT antirrebote_vector
     PORT(
          CLK : IN  std_logic;
+         RST : IN  std_logic;
          vector_IN : IN  std_logic_vector(3 downto 0);
          vector_OUT : OUT  std_logic_vector(3 downto 0)
         );
@@ -20,6 +21,7 @@ ARCHITECTURE behavior OF tb_antirrebote_vector IS
 
    --Inputs
    signal CLK : std_logic := '0';
+   signal RST : std_logic := '0';
    signal vector_IN : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
@@ -33,6 +35,7 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: antirrebote_vector PORT MAP (
           CLK => CLK,
+          RST => RST,
           vector_IN => vector_IN,
           vector_OUT => vector_OUT
         );
@@ -51,9 +54,15 @@ BEGIN
    stim_proc: process
    begin		
 	
+	WAIT FOR 3 ns;
+	RST <= '0';
 	vector_IN <= "0000";
-	WAIT FOR 40 ns;
+	WAIT FOR 35 ns;
+	RST <= '1';
+	WAIT FOR 5 ns;
 	vector_IN <= "0100";
+	WAIT FOR 15 ns;
+	RST <= '0';
 	WAIT FOR 55 ns;
 	vector_IN <= "0010";
 	WAIT FOR 2 ns;
@@ -72,6 +81,7 @@ BEGIN
 	ASSERT false
 			REPORT "Simulación finalizada. Test superado."
 			SEVERITY FAILURE;
+			
    end process;
 
 END;
