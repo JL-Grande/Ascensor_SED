@@ -4,7 +4,6 @@ Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
 Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/motor_puerta.vhd" into library work
-WARNING:HDLCompiler:1369 - "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/motor_puerta.vhd" Line 14: Possible infinite loop; process does not have a wait statement
 Parsing VHDL file "C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_motor_puerta.vhd" into library work
 Starting static elaboration
 Completed static elaboration
@@ -17,5 +16,5 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 6 VHDL Units
 Built simulation executable C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/tb_motor_puerta_isim_beh.exe
-Fuse Memory Usage: 36212 KB
-Fuse CPU Usage: 515 ms
+Fuse Memory Usage: 36224 KB
+Fuse CPU Usage: 484 ms

@@ -13,7 +13,7 @@ ARCHITECTURE behavior OF tb_gestor_display IS
          CLK : IN  std_logic;
          piso_now_3 : IN  std_logic_vector(2 downto 0);
          piso_obj_3 : IN  std_logic_vector(2 downto 0);
-         piso_seleccionado : OUT  std_logic_vector(1 downto 0);
+         piso_seleccionado : OUT  std_logic_vector(2 downto 0);
          piso_actual : OUT  std_logic_vector(1 downto 0);
          accion : OUT  std_logic_vector(1 downto 0)
         );
@@ -26,12 +26,12 @@ ARCHITECTURE behavior OF tb_gestor_display IS
    signal piso_obj_3 : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
-   signal piso_seleccionado : std_logic_vector(1 downto 0);
+   signal piso_seleccionado : std_logic_vector(2 downto 0);
    signal piso_actual : std_logic_vector(1 downto 0);
    signal accion : std_logic_vector(1 downto 0);
 
    -- Clock period definitions
-   constant CLK_period : time := 20 ns;
+   constant CLK_period : time := 10 ns;
  
 BEGIN
  
@@ -59,7 +59,7 @@ BEGIN
    stim_proc: process
    begin		
 	
-      WAIT FOR 5 ns;
+      WAIT FOR 2 ns;
 		piso_now_3 <= "001";
 		piso_obj_3 <= "011";
 		WAIT FOR 20 ns;

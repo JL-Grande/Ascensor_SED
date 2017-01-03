@@ -1,8 +1,5 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
-
 
 entity TOP is
 PORT(
@@ -16,8 +13,7 @@ PORT(
 	  digit_ctrl, flecha_ctrl : OUT std_logic;
 	  
 	  clk: in std_logic;										--clk:antes de entrar al divisorfrec
-	  reset: in std_logic
-	  	  
+	  reset: in std_logic 
 	  );
 	  
 end TOP;
@@ -27,6 +23,7 @@ architecture Behavioral of TOP is
 COMPONENT convertidor_piso_actual
 	PORT(
 		clk : in STD_LOGIC;
+		rst : in  STD_LOGIC;
 		piso_actual: IN std_logic_vector(3 DOWNTO 0);
 		boton_seleccionado: IN std_logic_vector(3 DOWNTO 0);
 		
@@ -47,6 +44,7 @@ COMPONENT FSM
 	PORT(
 	 clock,reset,nivel,abierto, cerrado:  IN std_logic;
 	 piso,boton :IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+	 boton_memoria: out STD_LOGIC_VECTOR (2 DOWNTO 0);
 	 accionador_puerta: out STD_LOGIC;
 	 accionador_subir, accionador_bajar: out STD_LOGIC
 	 );
@@ -91,6 +89,8 @@ END COMPONENT;
 
 COMPONENT motor_puerta
 	PORT (
+		CLK : in  STD_LOGIC;
+		RST : in  STD_LOGIC;
   		celula : in  STD_LOGIC;
       accionar_puerta : in  STD_LOGIC;
       actuador_puerta : out  STD_LOGIC
@@ -99,6 +99,8 @@ END COMPONENT;
 
 COMPONENT motor_ascensor 
 	PORT(
+		CLK : in  STD_LOGIC;
+		RST : in  STD_LOGIC;
 		accionar_bajar: in  STD_LOGIC;
 		accionar_subir: in  STD_LOGIC;
 		motor_subir: out  STD_LOGIC;
@@ -112,16 +114,16 @@ END COMPONENT;
  signal inoutreloj:std_logic;  --Senal del divisor de frecuencia
  signal inoutpiso_actual:std_logic_vector (2 DOWNTO 0);
  signal inoutpiso_deseado:std_logic_vector (2 DOWNTO 0);
+ signal sig_boton_pulsado:std_logic_vector (2 DOWNTO 0);
  signal code_piso_actual:std_logic_vector (1 DOWNTO 0);
  signal code_piso_objetivo:std_logic_vector (2 DOWNTO 0);
  signal sig_action:std_logic_vector (1 DOWNTO 0);
  
 begin
 
-
-
 inst_convertidor_piso_actual:convertidor_piso_actual port map(
 		clk => clk,
+		rst => reset,
 		piso_actual => piso_actual,
 		boton_seleccionado => boton_seleccionado,
 		piso_actual_convertido => inoutpiso_actual,
@@ -142,6 +144,7 @@ inst_FSM:FSM port map(
 		nivel => nivel,
 		piso => inoutpiso_actual,
 		boton => inoutpiso_deseado,
+		boton_memoria => sig_boton_pulsado,
 		accionador_puerta => sig_puerta,
 	   accionador_subir => sig_subir,
 		accionador_bajar => sig_bajar
@@ -150,7 +153,7 @@ inst_FSM:FSM port map(
 inst_gestor_display:gestor_display port map(
 		CLK => inoutreloj,
       piso_now_3 => inoutpiso_actual,
-      piso_obj_3 => inoutpiso_deseado,
+      piso_obj_3 => sig_boton_pulsado,
 		piso_seleccionado => code_piso_objetivo,
 		piso_actual => code_piso_actual,
 		accion => sig_action
@@ -161,7 +164,7 @@ inst_decoder: decoder port map(
 		led => seg_piso (7 downto 1),
 		dig_ctrl => digit_ctrl
 	);
-	seg_piso(0) <= '1';
+	seg_piso(0) <= '1';			--punto decimal
 		
 inst_dec_piso_seleccion:dec_piso_seleccion port map(
 		piso_code => code_piso_objetivo,
@@ -179,16 +182,19 @@ inst_dec_flechas: dec_flechas port map(
 	seg_flechas(0) <= '1';
 	
 inst_motor_puerta:motor_puerta port map(
+		CLK => clk,
+		RST => reset,
 	  	celula => celula,
       accionar_puerta => sig_puerta,
       actuador_puerta => puerta
 	);
 		
 inst_motor_ascensor:motor_ascensor port map(
+		CLK => clk,
+		RST => reset,
 		accionar_bajar => sig_bajar,
 		accionar_subir => sig_subir,
 		motor_subir => motor_subir,
 		motor_bajar => motor_bajar
 	);
 end Behavioral;
-

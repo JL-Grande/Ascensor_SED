@@ -59,12 +59,6 @@
       <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="78"/>
       <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="78"/>
     </file>
-    <file xil_pn:name="tb_dec_piso_seleccion.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="81"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="81"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="81"/>
-    </file>
     <file xil_pn:name="tb_dec_flechas.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="PostMapSimulation" xil_pn:seqID="86"/>
@@ -75,21 +69,9 @@
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="1"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
     </file>
-    <file xil_pn:name="tb_motor_puerta.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="2"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="88"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="88"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="88"/>
-    </file>
     <file xil_pn:name="motor_ascensor.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="1"/>
-    </file>
-    <file xil_pn:name="tb_motor_ascensor.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="40"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="40"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="40"/>
     </file>
     <file xil_pn:name="antirrebote_vector.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
@@ -99,39 +81,57 @@
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
     </file>
-    <file xil_pn:name="tb_antirrebote.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="100"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="100"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="100"/>
-    </file>
-    <file xil_pn:name="tb_antirrebote_vector.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="111"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="111"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="111"/>
-    </file>
-    <file xil_pn:name="tb_convertidor_piso_actual.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="120"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="120"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="120"/>
-    </file>
     <file xil_pn:name="traductor_3a2.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
     </file>
+    <file xil_pn:name="tb_antirrebote_vector.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="123"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="123"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="123"/>
+    </file>
+    <file xil_pn:name="tb_antirrebote.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="124"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="124"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="124"/>
+    </file>
+    <file xil_pn:name="tb_convertidor_piso_actual.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="129"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="129"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="129"/>
+    </file>
+    <file xil_pn:name="tb_dec_piso_seleccion.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="135"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="135"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="135"/>
+    </file>
     <file xil_pn:name="tb_traductor_3a2.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="127"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="127"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="127"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="142"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="142"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="142"/>
     </file>
     <file xil_pn:name="tb_gestor_display.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="132"/>
-      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="132"/>
-      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="132"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="143"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="143"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="143"/>
+    </file>
+    <file xil_pn:name="tb_motor_ascensor.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="149"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="149"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="149"/>
+    </file>
+    <file xil_pn:name="tb_motor_puerta.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="2"/>
+      <association xil_pn:name="PostMapSimulation" xil_pn:seqID="154"/>
+      <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="154"/>
+      <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="154"/>
     </file>
   </files>
 
