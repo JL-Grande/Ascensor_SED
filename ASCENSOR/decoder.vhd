@@ -13,7 +13,7 @@ ENTITY decoder IS
 END ENTITY decoder;
  
 ARCHITECTURE dataflow OF decoder IS
- BEGIN
+BEGIN
 	dig_ctrl <= '0';
 	WITH code SELECT
 			led <= "0000001" WHEN "00",

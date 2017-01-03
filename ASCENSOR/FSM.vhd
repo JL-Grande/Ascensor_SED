@@ -49,42 +49,44 @@ PROCESS(reset,clock)
 	
 	
 salida:
-PROCESS(presente,piso,bot,piso_ini)
-BEGIN
-	boton_memoria<=bot;
-   CASE presente IS
-     WHEN inicial=>   -- Al encender puede que este entre dos pisos
-        IF piso/="001" THEN
-            accionador_subir<='0';  -- Bajamos
-            accionador_bajar<='1';
-        END IF;
-        accionador_puerta<='0';     -- Cerrada
+PROCESS(clock)
+BEGIN	
+	if rising_edge(clock) then
+		boton_memoria<=bot;
+		CASE presente IS
+		WHEN inicial=>   -- Al encender puede que este entre dos pisos
+			IF piso/="001" THEN
+					accionador_subir<='0';  -- Bajamos
+					accionador_bajar<='1';
+			END IF;
+			accionador_puerta<='0';     -- Cerrada
 		  
-     WHEN parado=>
-        accionador_subir<='0';  -- Parado
-        accionador_bajar<='0';
-        accionador_puerta<='1'; -- Abierta
+		WHEN parado=>
+			accionador_subir<='0';  -- Parado
+			accionador_bajar<='0';
+			accionador_puerta<='1'; -- Abierta
 		  
-     WHEN cerrando=>
-        accionador_subir<='0';  -- Parado
-        accionador_bajar<='0';
-        accionador_puerta<='0';              
+		WHEN cerrando=>
+			accionador_subir<='0';  -- Parado
+			accionador_bajar<='0';
+			accionador_puerta<='0';              
 		  		  
-     WHEN marcha=>
-        IF bot<piso_ini THEN
-            accionador_subir<='0';  -- Bajamos
-            accionador_bajar<='1';
-        ELSE
-            accionador_subir<='1';  -- Subimos
-            accionador_bajar<='0';
-        END IF;
-        accionador_puerta<='0';     -- Cerrada
+		WHEN marcha=>
+			IF bot<piso_ini THEN
+					accionador_subir<='0';  -- Bajamos
+					accionador_bajar<='1';
+			ELSE
+					accionador_subir<='1';  -- Subimos
+					accionador_bajar<='0';
+			END IF;
+			accionador_puerta<='0';     -- Cerrada
 		  
-     WHEN abriendo=>
-        accionador_subir<='0';  -- Parado
-        accionador_bajar<='0';
-        accionador_puerta<='1'; -- Abrir
-   END CASE;
+		WHEN abriendo=>
+			accionador_subir<='0';  -- Parado
+			accionador_bajar<='0';
+			accionador_puerta<='1'; -- Abrir
+		END CASE;
+	end if;
 END PROCESS salida; 
 		  
 memoria:

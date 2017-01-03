@@ -15,19 +15,19 @@ architecture dataflow of dec_piso_seleccion is
 
 begin
 
-WITH piso_code SELECT
-			piso0 <= '1' WHEN "001",
-						'0' WHEN others;
+	WITH piso_code SELECT
+				piso0 <= '1' WHEN "001",
+							'0' WHEN others;
 						
-WITH piso_code SELECT						
-			piso1 <= '1' WHEN "010",
-						'0' WHEN others;
+	WITH piso_code SELECT						
+				piso1 <= '1' WHEN "010",
+							'0' WHEN others;
 						
-WITH piso_code SELECT						
-			piso2 <= '1' WHEN "011",
-						'0' WHEN others;
+	WITH piso_code SELECT						
+				piso2 <= '1' WHEN "011",
+							'0' WHEN others;
 						
-WITH piso_code SELECT						
-			piso3 <= '1' WHEN "100",
-						'0' WHEN others;
+	WITH piso_code SELECT						
+				piso3 <= '1' WHEN "100",
+							'0' WHEN others;
 end architecture dataflow;

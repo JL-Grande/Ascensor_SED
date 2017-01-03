@@ -27,13 +27,13 @@ signal piso_obj_2:STD_LOGIC_VECTOR (1 downto 0);
 begin
 
 inst_traductor_3a2_now:traductor_3a2 port map(
-		clk => CLK,
+		clk => clk,
 		vector_IN => piso_now_3,
 		vector_OUT => piso_now_2
 		);
 		
 inst_traductor_3a2_obj:traductor_3a2 port map(
-		clk => CLK,
+		clk => clk,
 		vector_IN => piso_obj_3,
 		vector_OUT => piso_obj_2
 		);

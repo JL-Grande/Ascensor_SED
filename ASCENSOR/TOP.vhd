@@ -89,6 +89,8 @@ END COMPONENT;
 
 COMPONENT motor_puerta
 	PORT (
+		CLK : in  STD_LOGIC;
+		RST : in  STD_LOGIC;
   		celula : in  STD_LOGIC;
       accionar_puerta : in  STD_LOGIC;
       actuador_puerta : out  STD_LOGIC
@@ -97,6 +99,8 @@ END COMPONENT;
 
 COMPONENT motor_ascensor 
 	PORT(
+		CLK : in  STD_LOGIC;
+		RST : in  STD_LOGIC;
 		accionar_bajar: in  STD_LOGIC;
 		accionar_subir: in  STD_LOGIC;
 		motor_subir: out  STD_LOGIC;
@@ -178,12 +182,16 @@ inst_dec_flechas: dec_flechas port map(
 	seg_flechas(0) <= '1';
 	
 inst_motor_puerta:motor_puerta port map(
+		CLK => clk,
+		RST => reset,
 	  	celula => celula,
       accionar_puerta => sig_puerta,
       actuador_puerta => puerta
 	);
 		
 inst_motor_ascensor:motor_ascensor port map(
+		CLK => clk,
+		RST => reset,
 		accionar_bajar => sig_bajar,
 		accionar_subir => sig_subir,
 		motor_subir => motor_subir,
