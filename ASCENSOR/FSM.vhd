@@ -90,7 +90,7 @@ BEGIN
 END PROCESS salida; 
 		  
 memoria:
-PROCESS(reset,clock)   -- Captura la pulsación del botón
+PROCESS(reset,clock,piso)   -- Captura la pulsación del botón
 BEGIN                -- y el piso donde se encuentra
    IF reset='1' THEN
      bot<="000";

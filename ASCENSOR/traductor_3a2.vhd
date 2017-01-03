@@ -9,8 +9,6 @@ end traductor_3a2;
 
 architecture Behavioral of traductor_3a2 is
 
-signal transicion:STD_LOGIC_VECTOR (1 DOWNTO 0);
-
 begin
 
 traductor_3a2:process(clk)

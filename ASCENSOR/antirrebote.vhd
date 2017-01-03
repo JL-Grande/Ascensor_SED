@@ -18,7 +18,7 @@ signal logic_prev   : std_logic := '0';		--almacena estado del boton, se usa com
 signal contador    : std_logic_vector(contador_SIZE downto 0) := (others => '0');	--vector contador para que pase el tiempo antirrebote
 	 
 begin
-    process(CLK,RST)
+    process(CLK,RST,logic_IN)
     begin
 	 if (RST='1') then
 		logic_OUT <= logic_IN;
