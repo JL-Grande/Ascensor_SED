@@ -1,0 +1,96 @@
+#-----------------------------------------------------------
+# PlanAhead v14.3 (64-bit)
+# Build 209282 by xbuild on Thu Oct 18 20:50:53 MDT 2012
+# Start of session at: Mon Jan 09 14:21:20 2017
+# Process ID: 10272
+# Log file: C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/planAhead_run_1/planAhead.log
+# Journal file: C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source C:/Xilins/Proyectos/Ascensor_SED/ASCENSOR/pa.fromNetlist.tcl
+set_property iostandard LVCMOS33 [get_ports [list {segmentos[7]} {segmentos[6]} {segmentos[5]} {segmentos[4]} {segmentos[3]} {segmentos[2]} {segmentos[1]} {segmentos[0]} {seg_ctrl[1]} {seg_ctrl[0]} {piso_actual[2]} {piso_actual[1]} {piso_actual[0]} {boton_seleccionado[2]} {boton_seleccionado[1]} {boton_seleccionado[0]} clk piso2_sel nivel reset abierto puerta piso0_sel cerrado motor_bajar piso1_sel celula motor_subir]]
+startgroup
+set_property package_pin M14 [get_ports {boton_seleccionado[2]}]
+endgroup
+startgroup
+set_property package_pin L13 [get_ports {boton_seleccionado[1]}]
+endgroup
+startgroup
+set_property package_pin L14 [get_ports {boton_seleccionado[0]}]
+endgroup
+startgroup
+set_property package_pin J13 [get_ports {piso_actual[2]}]
+endgroup
+startgroup
+set_property package_pin K14 [get_ports {piso_actual[1]}]
+endgroup
+startgroup
+set_property package_pin K13 [get_ports {piso_actual[0]}]
+endgroup
+startgroup
+set_property package_pin E13 [get_ports {seg_ctrl[1]}]
+endgroup
+startgroup
+set_property package_pin D14 [get_ports {seg_ctrl[0]}]
+endgroup
+startgroup
+set_property package_pin P16 [get_ports {segmentos[0]}]
+endgroup
+startgroup
+set_property package_pin E14 [get_ports {segmentos[1]}]
+endgroup
+startgroup
+set_property package_pin G13 [get_ports {segmentos[2]}]
+endgroup
+startgroup
+set_property package_pin N15 [get_ports {segmentos[3]}]
+endgroup
+startgroup
+set_property package_pin P15 [get_ports {segmentos[4]}]
+endgroup
+startgroup
+set_property package_pin R16 [get_ports {segmentos[5]}]
+endgroup
+startgroup
+set_property package_pin F13 [get_ports {segmentos[6]}]
+endgroup
+startgroup
+set_property package_pin N16 [get_ports {segmentos[7]}]
+endgroup
+startgroup
+set_property package_pin F12 [get_ports reset]
+endgroup
+startgroup
+set_property package_pin J14 [get_ports abierto]
+endgroup
+startgroup
+set_property package_pin H13 [get_ports cerrado]
+endgroup
+startgroup
+set_property package_pin H14 [get_ports celula]
+endgroup
+startgroup
+set_property package_pin G12 [get_ports nivel]
+endgroup
+startgroup
+set_property package_pin P11 [get_ports piso0_sel]
+endgroup
+startgroup
+set_property package_pin P12 [get_ports piso1_sel]
+endgroup
+startgroup
+set_property package_pin N12 [get_ports piso2_sel]
+endgroup
+startgroup
+set_property package_pin K12 [get_ports puerta]
+endgroup
+startgroup
+set_property package_pin N14 [get_ports motor_bajar]
+endgroup
+startgroup
+set_property package_pin L12 [get_ports motor_subir]
+endgroup
+startgroup
+set_property package_pin T9 [get_ports clk]
+endgroup
+save_design

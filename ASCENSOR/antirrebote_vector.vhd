@@ -4,8 +4,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity antirrebote_vector is
     Port ( CLK : in  STD_LOGIC;
 			  RST : in  STD_LOGIC;
-           vector_IN : in  STD_LOGIC_VECTOR (3 downto 0);
-           vector_OUT : out  STD_LOGIC_VECTOR (3 downto 0));
+           vector_IN : in  STD_LOGIC_VECTOR (2 downto 0);
+           vector_OUT : out  STD_LOGIC_VECTOR(2 downto 0));
 end antirrebote_vector;
 
 architecture Dataflow of antirrebote_vector is
@@ -39,13 +39,6 @@ inst_antirrebote_3:antirrebote port map(
 		RST => RST,
 		logic_IN => vector_IN(2),
 		logic_OUT => vector_OUT(2)
-		);
-		
-inst_antirrebote_4:antirrebote port map(
-		CLK => CLK,
-		RST => RST,
-		logic_IN => vector_IN(3),
-		logic_OUT => vector_OUT(3)
 		);
 
 end Dataflow;
