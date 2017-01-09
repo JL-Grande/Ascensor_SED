@@ -64,6 +64,7 @@ END COMPONENT;
 COMPONENT decoder
 	PORT (
 		CLK : IN std_logic;
+		RST : IN std_logic;
 		code : IN std_logic_vector(1 DOWNTO 0);
 		action : IN  STD_LOGIC_VECTOR (1 DOWNTO 0);
 		led : OUT std_logic_vector(6 DOWNTO 0);
@@ -155,6 +156,7 @@ inst_gestor_display:gestor_display port map(
 		
 inst_decoder: decoder port map(
 		CLK => inoutreloj,
+		RST => reset,
 		code => code_piso_actual,
 		action => sig_action,
 		led => segmentos (7 downto 1),
