@@ -10,7 +10,7 @@ PORT(
 	  puerta, motor_subir, motor_bajar: OUT std_logic;	   --SALIDAS TOP
 	  piso0_sel, piso1_sel, piso2_sel: OUT std_logic;
 	  segmentos: OUT std_logic_vector(7 DOWNTO 0);
-	  seg_ctrl: OUT std_logic_vector(1 DOWNTO 0);
+	  seg_ctrl: OUT std_logic_vector(3 DOWNTO 0);
 	  
 	  clk: in std_logic;										--clk:antes de entrar al divisorfrec
 	  reset: in std_logic 
@@ -64,10 +64,11 @@ END COMPONENT;
 COMPONENT decoder
 	PORT (
 		CLK : IN std_logic;
+		RST : IN std_logic;
 		code : IN std_logic_vector(1 DOWNTO 0);
 		action : IN  STD_LOGIC_VECTOR (1 DOWNTO 0);
 		led : OUT std_logic_vector(6 DOWNTO 0);
-		dig_ctrl : OUT  std_logic_vector(1 DOWNTO 0)
+		dig_ctrl : OUT  std_logic_vector(3 DOWNTO 0)
 	);
  END COMPONENT;
 
@@ -114,7 +115,6 @@ END COMPONENT;
  
 begin
 
-
 inst_convertidor_piso_actual:convertidor_piso_actual port map(
 		clk => clk,
 		rst => reset,
@@ -155,6 +155,7 @@ inst_gestor_display:gestor_display port map(
 		
 inst_decoder: decoder port map(
 		CLK => inoutreloj,
+		RST => reset,
 		code => code_piso_actual,
 		action => sig_action,
 		led => segmentos (7 downto 1),

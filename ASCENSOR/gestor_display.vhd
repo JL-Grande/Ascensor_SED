@@ -14,18 +14,26 @@ end gestor_display;
 
 architecture Behavioral of gestor_display is 
 
+signal piso_act:STD_LOGIC_VECTOR (1 downto 0);
+
 begin
 
 gestor_display:process(clk)
 	begin
 		if rising_edge(clk) then
-			piso_actual <= piso_now;
+		
+			if (piso_now/="00") then
+				piso_act <= piso_now;
+			end if;
+			
 			piso_seleccionado <= piso_obj;
+			piso_actual <= piso_act;
+			
 			if (piso_obj= "00") then
 				accion <= "01";
-			elsif (piso_now < piso_obj) then
+			elsif (piso_act < piso_obj) then
 				accion <= "11";
-			elsif (piso_now > piso_obj) then
+			elsif (piso_act > piso_obj) then
 				accion <= "00";
 			else
 				accion <= "10";
