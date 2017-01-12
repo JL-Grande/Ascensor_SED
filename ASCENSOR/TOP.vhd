@@ -115,7 +115,6 @@ END COMPONENT;
  
 begin
 
-
 inst_convertidor_piso_actual:convertidor_piso_actual port map(
 		clk => clk,
 		rst => reset,
