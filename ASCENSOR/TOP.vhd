@@ -85,6 +85,7 @@ COMPONENT motor_puerta
 	PORT (
 		CLK : in  STD_LOGIC;
 		RST : in  STD_LOGIC;
+		nivel : in STD_LOGIC;
   		celula : in  STD_LOGIC;
       accionar_puerta : in  STD_LOGIC;
       actuador_puerta : out  STD_LOGIC
@@ -173,6 +174,7 @@ inst_dec_piso_seleccion:dec_piso_seleccion port map(
 inst_motor_puerta:motor_puerta port map(
 		CLK => clk,
 		RST => reset,
+		nivel => nivel,
 	  	celula => celula,
       accionar_puerta => sig_puerta,
       actuador_puerta => puerta
