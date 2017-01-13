@@ -30,7 +30,7 @@ BEGIN
 				seg_reg1 <= "0000000";
 				digit := '0';
 				led <= "0000000";
-				dig_ctrl <= "1111";
+				dig_ctrl <= "0000";
 				
 		elsif rising_edge(CLK) then
 			if digit='0' then
