@@ -1,4 +1,3 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
@@ -13,8 +12,8 @@ ARCHITECTURE behavior OF tb_antirrebote_vector IS
     PORT(
          CLK : IN  std_logic;
          RST : IN  std_logic;
-         vector_IN : IN  std_logic_vector(3 downto 0);
-         vector_OUT : OUT  std_logic_vector(3 downto 0)
+         vector_IN : IN  std_logic_vector(2 downto 0);
+         vector_OUT : OUT  std_logic_vector(2 downto 0)
         );
     END COMPONENT;
     
@@ -22,10 +21,10 @@ ARCHITECTURE behavior OF tb_antirrebote_vector IS
    --Inputs
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
-   signal vector_IN : std_logic_vector(3 downto 0) := (others => '0');
+   signal vector_IN : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
-   signal vector_OUT : std_logic_vector(3 downto 0);
+   signal vector_OUT : std_logic_vector(2 downto 0);
 
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
@@ -56,27 +55,27 @@ BEGIN
 	
 	WAIT FOR 3 ns;
 	RST <= '0';
-	vector_IN <= "0000";
+	vector_IN <= "000";
 	WAIT FOR 35 ns;
 	RST <= '1';
 	WAIT FOR 5 ns;
-	vector_IN <= "0100";
+	vector_IN <= "100";
 	WAIT FOR 15 ns;
 	RST <= '0';
 	WAIT FOR 55 ns;
-	vector_IN <= "0010";
+	vector_IN <= "010";
 	WAIT FOR 2 ns;
-	vector_IN <= "0101";
+	vector_IN <= "101";
 	WAIT FOR 50 ns;
-	vector_IN <= "1000";
+	vector_IN <= "100";
 	WAIT FOR 4 ns;
-	vector_IN <= "0110";
+	vector_IN <= "110";
 	WAIT FOR 2 ns;
-	vector_IN <= "1001";
+	vector_IN <= "101";
 	WAIT FOR 3 ns;
-	vector_IN <= "0010";
+	vector_IN <= "010";
 	WAIT FOR 20 ns;
-	vector_IN <= "1101";
+	vector_IN <= "101";
 	WAIT FOR 50 ns;
 	ASSERT false
 			REPORT "Simulación finalizada. Test superado."

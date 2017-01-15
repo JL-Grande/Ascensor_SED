@@ -12,10 +12,10 @@ ARCHITECTURE behavior OF tb_convertidor_piso_actual IS
     PORT(
          clk : IN  std_logic;
          rst : IN  std_logic;
-         piso_actual : IN  std_logic_vector(3 downto 0);
-         boton_seleccionado : IN  std_logic_vector(3 downto 0);
-         piso_actual_convertido : OUT  std_logic_vector(2 downto 0);
-         boton_seleccionado_convertido : OUT  std_logic_vector(2 downto 0)
+         piso_actual : IN  std_logic_vector(2 downto 0);
+         boton_seleccionado : IN  std_logic_vector(2 downto 0);
+         piso_actual_convertido : OUT  std_logic_vector(1 downto 0);
+         boton_seleccionado_convertido : OUT  std_logic_vector(1 downto 0)
         );
     END COMPONENT;
     
@@ -23,12 +23,12 @@ ARCHITECTURE behavior OF tb_convertidor_piso_actual IS
    --Inputs
    signal clk : std_logic := '0';
    signal rst : std_logic := '0';
-   signal piso_actual : std_logic_vector(3 downto 0) := (others => '0');
-   signal boton_seleccionado : std_logic_vector(3 downto 0) := (others => '0');
+   signal piso_actual : std_logic_vector(2 downto 0) := (others => '0');
+   signal boton_seleccionado : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
-   signal piso_actual_convertido : std_logic_vector(2 downto 0);
-   signal boton_seleccionado_convertido : std_logic_vector(2 downto 0);
+   signal piso_actual_convertido : std_logic_vector(1 downto 0);
+   signal boton_seleccionado_convertido : std_logic_vector(1 downto 0);
 
    -- Clock period definitions
    constant clk_period : time := 10 ns;
@@ -60,36 +60,36 @@ BEGIN
    begin		
 	
 	rst <= '0';
-	boton_seleccionado <= "0000";
-	piso_actual <= "0100";
+	boton_seleccionado <= "000";
+	piso_actual <= "100";
 	WAIT FOR 40 ns;
-	boton_seleccionado <= "0100";
-	piso_actual <= "1000";
+	boton_seleccionado <= "100";
+	piso_actual <= "100";
 	WAIT FOR 10 ns;
 	RST <= '1';
 	WAIT FOR 10 ns;
 	RST <= '0';
 	WAIT FOR 45 ns;
-	boton_seleccionado <= "0010";
-	piso_actual  <= "0010";
+	boton_seleccionado <= "010";
+	piso_actual  <= "010";
 	WAIT FOR 2 ns;
-	boton_seleccionado <= "0101";
-	piso_actual <= "0011";
+	boton_seleccionado <= "101";
+	piso_actual <= "011";
 	WAIT FOR 50 ns;
-	boton_seleccionado <= "1000";
-	piso_actual  <= "0100";
+	boton_seleccionado <= "100";
+	piso_actual  <= "100";
 	WAIT FOR 4 ns;
-	boton_seleccionado <= "0110";
-	piso_actual  <= "0010";
+	boton_seleccionado <= "110";
+	piso_actual  <= "010";
 	WAIT FOR 2 ns;
-	boton_seleccionado <= "1001";
-	piso_actual  <= "1001";
+	boton_seleccionado <= "101";
+	piso_actual  <= "101";
 	WAIT FOR 3 ns;
-	boton_seleccionado <= "0010";
-	piso_actual  <= "1000";
+	boton_seleccionado <= "010";
+	piso_actual  <= "100";
 	WAIT FOR 20 ns;
-	boton_seleccionado <= "1101";
-	piso_actual <= "0010";
+	boton_seleccionado <= "110";
+	piso_actual <= "010";
 	WAIT FOR 80 ns;
 	
 	ASSERT false
