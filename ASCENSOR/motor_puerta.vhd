@@ -5,6 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity motor_puerta is
     Port ( CLK : in  STD_LOGIC;
 			  RST : in  STD_LOGIC;
+			  nivel : in STD_LOGIC;
 			  celula : in  STD_LOGIC;
            accionar_puerta : in  STD_LOGIC;
            actuador_puerta : out  STD_LOGIC);
@@ -20,7 +21,7 @@ begin
 		elsif rising_edge(CLK) then
 			if (accionar_puerta='1') then 
 				actuador_puerta <= '1';
-			elsif (accionar_puerta='0' AND celula='1') then
+			elsif (accionar_puerta='0' AND celula='1' AND nivel='1') then
 				actuador_puerta <= '1';
 			else actuador_puerta <= '0';
 			end if;

@@ -13,7 +13,7 @@ end divisorfrec;
 
 architecture Behavioral of divisorfrec is
 	signal temporal: std_logic;
-	signal contador: integer range 0 to 299999 :=0; --De 50Mhz a 167Hz
+	signal contador: integer range 0 to 299999 :=0; --De 50Mhz a 83Hz
 begin
 	divisorfrec:process(clk,reset)
 	begin
